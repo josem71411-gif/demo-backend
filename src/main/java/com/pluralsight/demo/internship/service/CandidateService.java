@@ -47,4 +47,10 @@ public class CandidateService {
                 .filter(c->c.getFieldOfStudy().equalsIgnoreCase(fieldOfStudy))
                 .collect(Collectors.toList());
     }
+    public List<Candidate> searchByName(String name) {
+        return candidateRepository.findAll().stream()
+                .filter(c->c.getName() !=null)
+                .filter(c-> c.getName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
+    }
 }
