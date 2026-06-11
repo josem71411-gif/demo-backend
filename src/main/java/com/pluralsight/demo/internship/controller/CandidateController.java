@@ -63,4 +63,10 @@ public class CandidateController {
         List<Candidate> candidates = candidateService.searchByName(name);
         return ResponseEntity.ok(candidates);
     }
+
+    @GetMapping("/search/email/{email}")
+    public ResponseEntity<List<Candidate>> searchByEmail(@PathVariable String email) {
+        List<Candidate> candidates = candidateService.searchByEmail(email);
+        return ResponseEntity.ok(candidates);
+    }
 }

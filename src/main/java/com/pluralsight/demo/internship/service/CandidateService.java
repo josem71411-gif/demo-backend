@@ -48,9 +48,18 @@ public class CandidateService {
                 .collect(Collectors.toList());
     }
     public List<Candidate> searchByName(String name) {
+        //  return candidateRepository.findAll().stream()
+        //        .filter(c->c.getName() !=null)
+        //      .filter(c-> c.getName().toLowerCase().contains(name.toLowerCase()))
+        //    .collect(Collectors.toList());
+        return candidateRepository.findByNameContainingIgnoreCase(name);
+    }
+
+
+    public List<Candidate> searchByEmail(String email) {
         return candidateRepository.findAll().stream()
-                .filter(c->c.getName() !=null)
-                .filter(c-> c.getName().toLowerCase().contains(name.toLowerCase()))
+                .filter(c->c.getEmail() !=null)
+                .filter(c->c.getEmail().toLowerCase().contains(email.toLowerCase()))
                 .collect(Collectors.toList());
     }
 }
